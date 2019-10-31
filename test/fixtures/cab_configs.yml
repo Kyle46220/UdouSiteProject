@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  [height: 1.5
+  width: 1.5
+  depth: 1.5
+  style: 
+  colour: 
+  shelf_qty: 
+  drawer_qty: 
+  cupboard_qty: 
+  back_panel: false
+  profile: one
+  collection: 
+
+two:
+  [height: 1.5
+  width: 1.5
+  depth: 1.5
+  style: 
+  colour: 
+  shelf_qty: 
+  drawer_qty: 
+  cupboard_qty: 
+  back_panel: false
+  profile: two
+  collection: 
