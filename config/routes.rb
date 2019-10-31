@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'pages/home'
+  get 'pages/not_found'
   get 'uploads/create', to: 'uploads#create'
   get 'uploads/new'
   get 'uploads/show'

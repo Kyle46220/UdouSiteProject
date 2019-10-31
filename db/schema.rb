@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_30_033540) do
+ActiveRecord::Schema.define(version: 2019_10_31_034126) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,10 +45,10 @@ ActiveRecord::Schema.define(version: 2019_10_30_033540) do
   create_table "carts", force: :cascade do |t|
     t.boolean "result_of_transaction"
     t.datetime "transaction_date"
-    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_carts_on_user_id"
+    t.bigint "profile_id"
+    t.index ["profile_id"], name: "index_carts_on_profile_id"
   end
 
   create_table "collections", force: :cascade do |t|
@@ -105,6 +105,7 @@ ActiveRecord::Schema.define(version: 2019_10_30_033540) do
   add_foreign_key "cab_configs", "profiles"
   add_foreign_key "cart_items", "cab_configs"
   add_foreign_key "cart_items", "carts"
+  add_foreign_key "carts", "profiles"
   add_foreign_key "collections", "profiles"
   add_foreign_key "reviews", "carts"
   add_foreign_key "uploads", "cab_configs"
