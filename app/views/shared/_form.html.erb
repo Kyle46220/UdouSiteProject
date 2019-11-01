@@ -1,0 +1,41 @@
+
+
+<%= form_with model:profile, url:profiles_path do |form| %>
+  
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+  
+  
+  <div>
+    <%form.label :user_type%>
+    <%Profile.user_types.keys.each do |type|%>
+      <%=form.label type%>
+      <%=form.radio_button :user_type, type%>
+      <% if type == profile.user_type %>
+        <%form.radio_button :user_type, :checked => true %>
+      <%end%>
+    <%end%>
+  </div>
+  <div>
+    <%form.label :email_opt_in%>
+    <%Profile.email_opt_ins.keys.each do |email_opt_in|%>
+      <%=form.label email_opt_in%>
+      <%=form.radio_button :email_opt_in, email_opt_in%>
+      <% if email_opt_in == profile.email_opt_in %>
+        <%form.radio_button :email_opt_in, :checked => true %>
+      <%end%>
+    <%end%>
+  </div>
+ 
+
+  <div >
+  <%=form.label :picture%>
+  <%=form.file_field :picture, accept: 'image/png, image/gif, image/jpeg, image/jpg'%>
+
+  </div>
+
+  <%= form.submit %>
+
+<% end %>
