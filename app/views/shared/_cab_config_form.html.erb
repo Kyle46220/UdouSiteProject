@@ -1,6 +1,10 @@
 <h1> this is the new cab config form </h1>
 
 <%= form_with model:@cab_config, local:true do |form| %>
+<div>
+    <%= form.label :collection_id %>
+    <%= form.select :collection_id, options_for_select(Collection.all.collect {|u| [u.name, u.id]}, :selected => Collection.first) %>
+  </div>
   
   <div>
     <%= form.label :height %>
@@ -14,15 +18,40 @@
     <%= form.label :depth %>
     <%= form.number_field :depth %>
   </div>
-  <div>
-    <%= form.label :style %>
-    <%= form.text_field :style %>
+ 
+   <div>
+    <%form.label :colour%>
+    <%CabConfig.colours.keys.each do |col|%>
+      <%=form.label col %>
+      <%=form.radio_button :colour, col %>
+     
+    <%end%>
   </div>
   <div>
-    <%= form.label :colour %>
-    <%= form.text_field :colour %>
+    <%= form.label :shelf_qty %>
+    <%= form.number_field :shelf_qty %>
   </div>
   <div>
+    <%= form.label :drawer_qty%>
+    <%= form.number_field :drawer_qty %>
+  </div>
+  <div>
+    <%= form.label :cupboard_qty %>
+    <%= form.number_field :cupboard_qty %>
+  </div>
+
+  <div>
+    <%= form.label :back_panel %>
+    <%= form.text_field :back_panel %>
+  </div>
+  <div>
+    <%form.label :style%>
+    <%CabConfig.styles.keys.each do |style|%>
+      <%=form.label style %>
+      <%=form.radio_button :style, style %>
+     
+    <%end%>
+  </div>
    
   
   <%= form.submit %>

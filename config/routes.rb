@@ -24,9 +24,21 @@ Rails.application.routes.draw do
   # get 'collections/edit'
   # get 'collections/update'
 
-  resources 'cab_configs'
-  resources 'collections', only: [:new, :create, :show, :index]
-  
+  resources :cab_configs do
+    collection do 
+      get :collection
+    end
+   
+  end
+
+  resources 'collections' do 
+    collection do
+      get :public
+    end
+    collection do
+      get :private
+    end
+  end
   
 
 

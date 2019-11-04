@@ -1,2 +1,33 @@
 <h1>CabConfigs#index</h1>
 <p>Find me in app/views/cab_configs/index.html.erb</p>
+<table>
+        <thead>
+          <tr>
+            <th>name</th>
+
+            <th colspan="4"></th>
+            
+            
+          </tr>
+        </thead>
+        <tbody>
+          <% @cab_configs.each do |cab_config| %>
+          <tr>
+          <td><%="#{cab_config.colour.capitalize} #{cab_config.style.capitalize} #{cab_config.collection.name.capitalize} Cabinet #{cab_config.id}"%></td>
+          
+                <td><%= link_to "View", cab_config_path( cab_config )%></td>
+                
+                <td><%= link_to "Destroy", cab_config_path( cab_config ), method: :delete, data:{confirm: "reeeeaaaallllyyy???"}%></td>
+              </tr>
+            
+
+          
+
+          </tr>
+            
+              
+              
+            
+          <%end%>
+        </tbody>
+      </table>

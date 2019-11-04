@@ -1,6 +1,6 @@
 class CollectionsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_collection, only:[ :show]
+  before_action :set_collection, only:[ :show, :destroy]
   before_action :set_user_profile_collection, only: [:edit, :update]
 
   def index
@@ -8,6 +8,15 @@ class CollectionsController < ApplicationController
   end
 
   def show
+  end
+  def public
+    @collections = Collection.where(public: true)
+
+  end
+
+  def private
+    @collections = Collection.where(public: false)
+
   end
 
   def create
@@ -30,6 +39,11 @@ class CollectionsController < ApplicationController
   end
 
   def update
+  end
+
+  def destroy
+    @collection.destroy
+    redirect_to collections_path
   end
    private
 

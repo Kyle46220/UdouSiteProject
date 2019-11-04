@@ -18,7 +18,8 @@
               
               <td><%=collection.name %></td>
               
-              <td><%= link_to "show", collection_path(collection)%></td>
+              <td><%= link_to "show collection", cab_configs_path(collection)%></td>
+              <td><%= link_to "Destroy", collection_path(collection), method: :delete, data:{confirm: "reeeeaaaallllyyy???"}%></td>
 
               
           <%end%>
