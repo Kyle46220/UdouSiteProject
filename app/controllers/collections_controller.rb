@@ -1,6 +1,6 @@
 class CollectionsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_collection, only:[ :show, :destroy]
+  before_action :set_collection, only: [:show, :destrpy]
   before_action :set_user_profile_collection, only: [:edit, :update]
 
   def index
@@ -10,12 +10,14 @@ class CollectionsController < ApplicationController
   def show
   end
   def public
-    @collections = Collection.where(public: true)
+    @collections = Collection.where(public_display: true)
+    render 'index'
 
   end
 
   def private
-    @collections = Collection.where(public: false)
+    @collections = Collection.where(public_display: false)
+    render 'index'
 
   end
 
@@ -23,8 +25,13 @@ class CollectionsController < ApplicationController
     # byebug
     @collection = current_user.profile.collections.new(collection_params)
     
+    if @collection.profile.user_type == 'customer'
+      @collection.public_display == false
+    end
     
-    if @collection.save
+    
+    if @collection.save 
+      
       redirect_to collections_path
     else
       render "new"
@@ -39,6 +46,9 @@ class CollectionsController < ApplicationController
   end
 
   def update
+
+    @collection.update(collection_params)
+    redirect_to collections_path
   end
 
   def destroy
@@ -60,7 +70,7 @@ class CollectionsController < ApplicationController
   end
 
   def collection_params
-    params.require(:collection).permit(:name,:public)
+    params.require(:collection).permit(:name,:public_display)
 
   end
 

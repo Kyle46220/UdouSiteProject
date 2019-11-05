@@ -1,6 +1,6 @@
 <h1> this is the new cab config form </h1>
 
-<%= form_with model:@cab_config do |form| %>
+<%= form_with model:@cab_config, local:true do |form| %>
 <div>
     <%= form.label :collection_id %>
     <%= form.select :collection_id, options_for_select(Collection.all.collect {|u| [u.name, u.id]}, :selected => Collection.first) %>
@@ -8,15 +8,15 @@
   
   <div>
     <%= form.label :height %>
-    <%= form.number_field :height %>
+    <%= form.number_field :height, :value => @cab_config.height %>
   </div>
   <div>
     <%= form.label :width %>
-    <%= form.number_field :depth %>
+    <%= form.number_field :width, value: @cab_config.width %>
   </div>
   <div>
     <%= form.label :depth %>
-    <%= form.number_field :depth %>
+    <%= form.number_field :depth, value: @cab_config.depth %>
   </div>
  
    <div>
@@ -24,16 +24,17 @@
     <%CabConfig.colours.keys.each do |col|%>
       <%=form.label col %>
       <%=form.radio_button :colour, col %>
+      
      
     <%end%>
   </div>
   <div>
     <%= form.label :shelf_qty %>
-    <%= form.number_field :shelf_qty %>
+    <%= form.number_field :shelf_qty, value: @cab_config.shelf_qty%>
   </div>
   <div>
     <%= form.label :drawer_qty%>
-    <%= form.number_field :drawer_qty %>
+    <%= form.number_field :drawer_qty, value: @cab_config.drawer_qty%>
   </div>
   <div>
     <%= form.label :cupboard_qty %>

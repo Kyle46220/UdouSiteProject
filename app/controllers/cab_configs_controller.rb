@@ -1,15 +1,25 @@
 class CabConfigsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_cab_config, only:[ :show, :destroy, :show]
+  before_action :set_cab_config, only:[ :show, :destroy, :show, :edit]
 
-  before_action :set_user_profile_collection, only: [:new]
+  before_action :set_user_profile_collection, only: [:new, :edit]
+
   def index
     @cab_configs = CabConfig.all #(where public = true)
     
   end
 
+  # This is the controller that displays the cab_config index by collection. The 'show' links on collection index page call it. 
   def collection
-    @cab_configs = CabConfig.where(collection)
+    @collection = Collection.find(params[:collection_id])
+
+    
+
+    @cab_configs = CabConfig.where(collection_id: @collection.id)
+    render 'index'
+    
+
+
   end
 
  
@@ -56,9 +66,16 @@ class CabConfigsController < ApplicationController
   
 
   def edit
+    # @cab_config = CabConfig.find(cab_config_params)
+    # render 'new'
   end
 
   def update
+    
+    @cab_config = CabConfig.new(cab_config_params)
+    if @cab_config.save
+      redirect_to collections_path
+    end
   end
 
   def destroy

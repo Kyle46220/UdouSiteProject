@@ -44,10 +44,20 @@ Rails.application.routes.draw do
 
   get 'profiles', to: 'profiles#index', as: 'profiles'
 
-
+  get 'profile', to: 'profiles#show', as: 'profile'
 
   get 'profiles/new', to: 'profiles#new', as: 'new_profile'
 
   post 'profiles', to: 'profiles#create'
+
+  get 'profiles/edit', to: 'profiles#edit', as: 'edit_profile'
+
+  put 'profile', to: 'profiles#update'
+  patch 'profile', to: 'profiles#update'
+
+  put 'collections/:id', to: 'collections#update'
+  patch 'collections/:id', to: 'collections#update'
+
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

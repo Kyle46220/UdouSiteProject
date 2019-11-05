@@ -1,11 +1,22 @@
 
 
-<%= form_with model:@collection, url:collections_path do |form| %>
+<%= form_with model:@collection do |form| %>
   
   <div>
     <%= form.label :name %>
     <%= form.text_field :name %>
   </div>
+
+  
+  
+  <div>
+    <%= form.radio_button(:public_display, true) %>
+    <%= form.label(:public_display_true, "Public Collection") %>
+    <%= form.radio_button(:public_display, false) %>
+    <%= form.label(:public_display_false, "Private Collection") %>
+    
+  </div>
+
   
   
  

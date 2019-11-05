@@ -1,30 +1,42 @@
 class ProfilesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_profile, only: [:show]
-  # before_action :set_profile_user
+  
+  before_action :set_user_profile, only: [:show, :edit, :update]
 
   def new
     @profile = Profile.new
   end
 
-  def create
-    
+  def create   
   
     
     @profile = Profile.new(profile_params)
    
-    @profile.user = current_user
+    @profile.user = current_user 
  
     if @profile.save
       redirect_to collections_path
     else
       render "new"
+      
     end
 
   
   end
 
   def show
+    # @profile = current_user.profile
+    
+  end
+
+  def edit
+    
+  end
+
+  def update
+    # @profile = current_user.profile
+    @profile.update(profile_params)
+    redirect_to collections_path
   end
 
 
@@ -36,15 +48,13 @@ class ProfilesController < ApplicationController
 
   end
 
-  def set_profile
-    @profile = Profile.find(params[:id])
-  end
+  
 
   
 
   def set_user_profile
-    id = params[:id]
-    @profile = current_user.profile.find_by_id(id) 
+    
+    @profile = current_user.profile 
 
   end
 
