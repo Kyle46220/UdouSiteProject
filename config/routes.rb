@@ -28,6 +28,9 @@ Rails.application.routes.draw do
     collection do 
       get :collection
     end
+    collection do 
+      get :private_index
+    end
    
   end
 

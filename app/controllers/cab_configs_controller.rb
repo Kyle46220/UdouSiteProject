@@ -1,8 +1,8 @@
 class CabConfigsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_cab_config, only:[ :show, :destroy, :show, :edit]
+  before_action :set_cab_config, only:[ :show, :destroy, :show, :edit, :update]
 
-  before_action :set_user_profile_collection, only: [:new, :edit]
+  before_action :set_user_profile_collection, only: [:new, :edit, :collection]
 
   def index
     @cab_configs = CabConfig.all #(where public = true)
@@ -21,6 +21,21 @@ class CabConfigsController < ApplicationController
 
 
   end
+
+  #This controller is for displaying saved designs of customers accessible from the profile#show. 
+
+  def private_index
+    if current_user.profile.user_type == "customer"
+    @collection = current_user.profile.collections.first
+    @cab_configs = CabConfig.where(collection_id: @collection.id)
+    render 'collection_index'
+    else 
+      @cab_configs = CabConfig.all
+      render 'index'
+    end
+
+  end
+
 
  
 
@@ -63,16 +78,33 @@ class CabConfigsController < ApplicationController
 
   end
 
+  def customer_create
+  end
+
   
 
   def edit
-    # @cab_config = CabConfig.find(cab_config_params)
-    # render 'new'
-  end
-
-  def update
     
+  end
+ #This controller is has different results depending on whether your admin or customer. Updating as an admin will just update a cabinet, whereas updating as a customer will creat a new cabinet and a new collection, if you don't already have one which will then be displayed in the profile saved designs section. 
+  def update
+    @profile = current_user.profile
+
+    if current_user.profile.user_type == 'customer'
+      if current_user.profile.collections.first == nil
     @cab_config = CabConfig.new(cab_config_params)
+    @cab_config.collection = current_user.profile.collections.new(name: current_user.profile.name, public_display: false, profile_id: current_user.profile.id)
+      else
+        @cab_config = CabConfig.new(cab_config_params)
+        @cab_config.collection = current_user.profile.collections.first
+        # where(name: current_user.profile.name)
+      end
+   
+    else
+      @cab_config.update(cab_config_params)
+      
+    end
+
     if @cab_config.save
       redirect_to collections_path
     end

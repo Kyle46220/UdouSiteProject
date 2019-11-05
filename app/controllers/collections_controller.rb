@@ -22,7 +22,7 @@ class CollectionsController < ApplicationController
   end
 
   def create
-    # byebug
+    
     @collection = current_user.profile.collections.new(collection_params)
     
     if @collection.profile.user_type == 'customer'
