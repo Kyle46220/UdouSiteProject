@@ -1,5 +1,18 @@
 Rails.application.routes.draw do
 
+  get 'cart_items/create'
+  get 'cart_items/update'
+  get 'cart_items/destroy'
+  
+
+  
+  # get 'carts/new'
+  # get 'carts/create'
+  # get 'carts/edit'
+  # get 'carts/update'
+  # get 'carts/delete'
+  # get 'carts/show'
+  
   devise_for :users, controllers: { registrations: "registrations" }
   
   get '/', to: "pages#home", as: "root"
@@ -42,6 +55,8 @@ Rails.application.routes.draw do
       get :private
     end
   end
+
+  
   
 
 
@@ -61,6 +76,11 @@ Rails.application.routes.draw do
   put 'collections/:id', to: 'collections#update'
   patch 'collections/:id', to: 'collections#update'
 
+  
+    resources 'carts' do 
+      resources 'cart_items' 
+    end
+  
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -15,7 +15,11 @@
  */
 
  
-
+ *{
+  color: rgb(23, 98, 211);
+  font-family: 'Rubik', sans-serif;
+  margin: 0;
+}
 .small-nav {
   
   background-color: red;

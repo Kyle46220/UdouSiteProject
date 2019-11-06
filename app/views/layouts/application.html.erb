@@ -7,14 +7,17 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Rubik&display=swap" rel="stylesheet">
   </head>
 
   <body>
   <div class="small-nav">
     <div class="logout-option">
       <%if user_signed_in? %>
-        <%=link_to 'logout', destroy_user_session_path, method: :delete %>        
+        <%=link_to 'logout', destroy_user_session_path, method: :delete %> 
+        <% if current_user.profile != nil%>      
           <p>Logged in as: <strong><%=current_user.profile.name%> who is an: <%=current_user.profile.user_type%></strong></p>
+          <%end%>
         <%= link_to 'Profile', profile_path %>
         <%else%>
           <%= link_to 'login', new_user_session_path%>
@@ -30,9 +33,15 @@
     <div class="links">
       <%= link_to 'home', root_path  %>
       <%= link_to 'Collections', collections_path %>
-      <%= link_to 'new collection', new_collection_path if current_user.profile.user_type == 'admin' %>
+      <% if current_user != nil && current_user.profile != nil %>
+        <% if current_user.profile.user_type == 'admin' %>
+          <%= link_to 'new collection', new_collection_path %>
+          <%= link_to "new cab", new_cab_config_path %>
+        <%end%>
+      <%end%>
+      
       <%= link_to 'all Cabs', cab_configs_path %>
-      <%= link_to "new cab", new_cab_config_path if current_user.profile.user_type == 'admin'%>      
+            
     </div>
   </div>
     <%= yield %>
