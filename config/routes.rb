@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  get 'orders/index'
+  get 'orders/show'
+  get 'orders/new'
   # get 'cart_items/create'
   # get 'cart_items/update'
   # get 'cart_items/destroy'
@@ -93,6 +96,8 @@ Rails.application.routes.draw do
   # get 'cart_items', to: 
   get 'cart_items/:id', to: "cart_items#show", as: "cart_item"
   delete 'cart_items/:id', to: "cart_items#destroy"
+  
+  resources :orders
 
   
 

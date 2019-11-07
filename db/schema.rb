@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_07_023958) do
+ActiveRecord::Schema.define(version: 2019_11_07_054045) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 2019_11_07_023958) do
     t.bigint "cart_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "quantity", default: 1
     t.index ["cab_config_id"], name: "index_cart_items_on_cab_config_id"
     t.index ["cart_id"], name: "index_cart_items_on_cart_id"
   end
@@ -79,6 +80,14 @@ ActiveRecord::Schema.define(version: 2019_11_07_023958) do
     t.datetime "updated_at", null: false
     t.boolean "public_display"
     t.index ["profile_id"], name: "index_collections_on_profile_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.text "address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "profiles", force: :cascade do |t|
