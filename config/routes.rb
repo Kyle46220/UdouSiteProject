@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   # get 'carts/update'
   # get 'carts/delete'
   # get 'carts/show'
-  
+
   devise_for :users, controllers: { registrations: "registrations" }
   
   get '/', to: "pages#home", as: "root"
@@ -55,6 +55,8 @@ Rails.application.routes.draw do
       get :private
     end
   end
+
+  resources :uploads
 
   
   

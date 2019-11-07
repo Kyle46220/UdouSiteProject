@@ -9,6 +9,7 @@
   <div>
     <%= form.label :height %>
     <%= form.number_field :height %>
+    <%= form.range_field(:height, in: 34..235) %>
   </div>
   <div>
     <%= form.label :width %>
@@ -18,9 +19,11 @@
     <%= form.label :depth %>
     <%= form.number_field :depth %>
   </div>
+  
  
    <div>
     <%form.label :colour%>
+    <%= color_field(:colour, :colour) %>
     <%CabConfig.colours.keys.each do |col|%>
       <%=form.label col %>
       <%=form.radio_button :colour, col %>

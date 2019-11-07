@@ -1,2 +1,22 @@
 <h1>Uploads#new</h1>
 <p>Find me in app/views/uploads/new.html.erb</p>
+<%= form_with model:@upload do |form| %>
+  
+  
+  <div>
+    <%= form.label :cab_config_id %>
+    <%= form.select :cab_config_id, options_for_select(current_user.profile.collections.first.cab_configs.all.collect {|cab_config| ["#{cab_config.colour} #{cab_config.style} #{cab_config.collection.name} Cabinet ##{cab_config.id}", cab_config.id]}) %>
+  </div>
+
+  
+
+  <div >
+  <%=form.label :image_upload%>
+  <%=form.file_field :image_upload, accept: 'image/png, image/gif, image/jpeg, image/jpg'%>
+
+  </div>
+
+  <%= form.submit %>
+
+<% end %>
+

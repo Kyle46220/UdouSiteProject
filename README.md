@@ -103,7 +103,17 @@ This appliciation has 8 tables
 
 The first is a table of Users, with the fields email, and password which are not allowed to be null, as they are referenced by other tables. There is also a primary key field containing an auto incrementing integer to act as a unique identifier for each specific table entry. All tables have these primary key fields, and created_at and updated_at datetime fields.  The second table called "Profiles" references the primary key of users by keeping this integer in its foreign key field, and has a field for name, which takes a string, and a field for user type, which takes a boolean status, as does the field for 'email opt in'.
 
-Foe the rest of the tables I will only discuss the foreign keys. 
+For the rest of the tables I will only discuss the foreign keys. 
+
+The collection table has a foreign key of the profile tables primary key to keep track of which collection belongs to which profile. 
+
+The cab_configs table has two foreign key fields. One for the collection it belongs to and one for the profile which created it. 
+
+there is a joining table called cart_items which keeps foreign key fields of cab_config primary keys and cart primary keys, to relate the cab_configs to the transactions that result from a cart. 
+
+
+
+
 
 
 

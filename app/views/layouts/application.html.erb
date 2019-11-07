@@ -37,6 +37,8 @@
         <% if current_user.profile.user_type == 'admin' %>
           <%= link_to 'new collection', new_collection_path %>
           <%= link_to "new cab", new_cab_config_path %>
+          <% else %>
+          <%= link_to 'New Image Upload', new_upload_path %>
         <%end%>
       <%end%>
       
