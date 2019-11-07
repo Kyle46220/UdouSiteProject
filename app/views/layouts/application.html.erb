@@ -18,6 +18,7 @@
         <% if current_user.profile != nil%>      
           <p>Logged in as: <strong><%=current_user.profile.name%> who is an: <%=current_user.profile.user_type%></strong></p>
           <%end%>
+        <%= link_to 'Cart', cart_path(cart_id: @current_cart.id)%>
         <%= link_to 'Profile', profile_path %>
         <%else%>
           <%= link_to 'login', new_user_session_path%>

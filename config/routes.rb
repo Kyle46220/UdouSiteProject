@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
-  get 'cart_items/create'
-  get 'cart_items/update'
-  get 'cart_items/destroy'
+  # get 'cart_items/create'
+  # get 'cart_items/update'
+  # get 'cart_items/destroy'
   
 
   
@@ -79,9 +79,25 @@ Rails.application.routes.draw do
   patch 'collections/:id', to: 'collections#update'
 
   
-    resources 'carts' do 
-      resources 'cart_items' 
-    end
+    # resources 'carts' do 
+    #   resources 'cart_items' 
+    # end
+
+  # get 'carts/:id', to: "carts#show", as: "cart"
+  delete 'carts/:id', to: "carts#destroy"
+  get 'cart', to: "carts#show", as: "cart"
+
+  post 'cart_items/:id/add', to: "cart_items#up_qty", as: "cart_item_up"
+  post 'cart_items/:id/reduce', to: "cart_items#down_qty", as: "cart_item_down"
+  post 'cart_items', to: "cart_items#create"
+  # get 'cart_items', to: 
+  get 'cart_items/:id', to: "cart_items#show", as: "cart_item"
+  delete 'cart_items/:id', to: "cart_items#destroy"
+
+  
+
+#   get 'line_items/:id' => "line_items#show", as: "line_item"
+# delete 'line_items/:id' => "line_items#destroy"
   
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
