@@ -8,8 +8,8 @@
   <p>Email: <%= order.email %></p>
   <p>Line Items: </p>
   <ul>
-    <% order.line_items.each do |item| %>
-    <li><%= item.quantity %> x <%= item.product.name %></li>
+    <% order.cart_items.each do |item| %>
+    <li><%= item.quantity %> x <%= item.cab_config.id %></li>
     <% end %>
   </ul>
 <% end
