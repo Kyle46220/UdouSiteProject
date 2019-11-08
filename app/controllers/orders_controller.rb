@@ -5,6 +5,29 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    #  session = Stripe::Checkout::Session.create(
+    #     payment_method_types: ['card'],
+    #     customer_email: current_user.email,
+    #     line_items: [{
+    #         name: @order.name,
+    #         description: "#{@order.name} cabinets",
+    #         amount: @order.cart.subtotal,
+    #         currency: 'aud',
+    #         quantity: 1,
+    #     }],
+    #     payment_intent_data: {
+    #         metadata: {
+    #             user_id: current_user.id,
+    #             listing_id: @cab_config.id
+    #         }
+    #     },
+    #     success_url: "#{root_url}payments/success?userId=#{current_user.id}&listingId=#{@listing.id}",
+    #     cancel_url: "#{root_url}listings"
+    # )
+
+
+
+    # @session_id = session.id
   end
 
   def new
@@ -20,7 +43,7 @@ class OrdersController < ApplicationController
     @order.save
     Cart.destroy(session[:cart_id])
     session[:cart_id] = nil
-    redirect_to collections_path
+    redirect_to order_path
   end
   
   private
@@ -29,4 +52,28 @@ class OrdersController < ApplicationController
     end
 
 end
+
+ # session = Stripe::Checkout::Session.create(
+    #     payment_method_types: ['card'],
+    #     customer_email: current_user.email,
+    #     line_items: [{
+    #         name: @order.name,
+    #         description: @cab_config.collection.name,
+    #         amount: @cab_config.price * 100,
+    #         currency: 'aud',
+    #         quantity: 1,
+    #     }],
+    #     payment_intent_data: {
+    #         metadata: {
+    #             user_id: current_user.id,
+    #             listing_id: @cab_config.id
+    #         }
+    #     },
+    #     success_url: "#{root_url}payments/success?userId=#{current_user.id}&listingId=#{@listing.id}",
+    #     cancel_url: "#{root_url}listings"
+    # )
+
+
+
+    # @session_id = session.id
 

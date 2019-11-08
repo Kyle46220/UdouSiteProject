@@ -10,6 +10,31 @@ class CartsController < ApplicationController
   # end
   def show
     @cart = @current_cart
+    byebug
+    session = Stripe::Checkout::Session.create(
+        payment_method_types: ['card'],
+        customer_email: current_user.email,
+        line_items: [{
+            name: current_user.profile.name,
+            description: "#{current_user.profile.name}'s cabinets",
+            amount: @cart.sub_total * 100 , 
+            currency: 'aud',
+            quantity: 1
+        }],
+        payment_intent_data: {
+            metadata: {
+                user_id: current_user.id,
+                listing_id: @cart.id
+            }
+        },
+        success_url: "#{root_url}payments/success?userId=#{current_user.id}&listingId=#{@cart.id}",
+        cancel_url: "#{root_url}collections"
+    )
+
+
+
+    @session_id = session.id
+   
   end
 
   def destroy
@@ -31,3 +56,4 @@ class CartsController < ApplicationController
   
   end
 end
+

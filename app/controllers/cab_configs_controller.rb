@@ -130,7 +130,7 @@ class CabConfigsController < ApplicationController
   end
 
  def cab_config_params
-  params.require(:cab_config).permit(:collection_id, :height, :width, :depth, :drawer_qty, :shelf_qty, :cupboard_qty, :style, :colour, :back_panel )
+  params.require(:cab_config).permit(:collection_id, :height, :width, :depth, :drawer_qty, :shelf_qty, :cupboard_qty, :style, :colour, :back_panel, :price )
 
  end
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_07_054045) do
+ActiveRecord::Schema.define(version: 2019_11_08_004054) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 2019_11_07_054045) do
     t.bigint "collection_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "price", default: "0.0"
     t.index ["collection_id"], name: "index_cab_configs_on_collection_id"
     t.index ["profile_id"], name: "index_cab_configs_on_profile_id"
   end
@@ -60,8 +61,10 @@ ActiveRecord::Schema.define(version: 2019_11_07_054045) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "quantity", default: 1
+    t.bigint "order_id"
     t.index ["cab_config_id"], name: "index_cart_items_on_cab_config_id"
     t.index ["cart_id"], name: "index_cart_items_on_cart_id"
+    t.index ["order_id"], name: "index_cart_items_on_order_id"
   end
 
   create_table "carts", force: :cascade do |t|
@@ -136,6 +139,7 @@ ActiveRecord::Schema.define(version: 2019_11_07_054045) do
   add_foreign_key "cab_configs", "profiles"
   add_foreign_key "cart_items", "cab_configs"
   add_foreign_key "cart_items", "carts"
+  add_foreign_key "cart_items", "orders"
   add_foreign_key "carts", "profiles"
   add_foreign_key "collections", "profiles"
   add_foreign_key "profiles", "users"

@@ -40,6 +40,14 @@
 <%=@cab_config.collection.name%>
 </p>
 
+<strong>Price</strong>
+<%if @cab_config.price != nil%>
+<%=@cab_config.price%>
+<% else%>
+<%=@cab_config.price = $6 %>
+<%end%>
+</p>
+
 <%= link_to "Edit", edit_cab_config_path %>
 
 <%= link_to "Add to cart", cart_items_path(cab_config_id: @cab_config.id), method: :post %>

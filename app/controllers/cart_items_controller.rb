@@ -1,6 +1,6 @@
 class CartItemsController < ApplicationController
   before_action :authenticate_user!
-  before_action :current_cart
+  # before_action :current_cart
   # def index
   #   @cart_items = CartItem.all
   # end
@@ -31,7 +31,8 @@ class CartItemsController < ApplicationController
       @cart_item.cart = current_cart
       @cart_item.cab_config = chosen_cabinet
     end
-  
+    # byebug
+
     # Save and redirect to cart show path
     @cart_item.save
     redirect_to cart_path(current_cart)
@@ -79,7 +80,7 @@ class CartItemsController < ApplicationController
   # end
 
   def cart_item_params
-    params.require(:cart_item).permit(:quantity,:cab_config_id, :cart_id)
+    params.require(:cart_item).permit(:quantity,:cab_config_id, :cart_id, :order_id)
   end
   
   
