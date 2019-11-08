@@ -1,5 +1,6 @@
 class CabConfigsController < ApplicationController
   before_action :authenticate_user!
+  include ::CabConfigsHelper
   before_action :set_cab_config, only:[ :show, :destroy, :show, :edit, :update]
 
   before_action :set_user_profile_collection, only: [:new, :edit, :collection]
@@ -65,9 +66,11 @@ class CabConfigsController < ApplicationController
     # end
     id = params[:id]
    
-    @cab_config = CabConfig.new(cab_config_params)
+    @cab_config = CabConfig.create(cab_config_params)
     # @cab_config.collection = current_user.profile.collections.find_by_id(id)
-
+    
+    @cab_config.price = @cab_config.price_calc(cab_config_params)
+    
     if @cab_config.save
       redirect_to cab_configs_path
     else 

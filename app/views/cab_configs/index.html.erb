@@ -17,7 +17,7 @@
           
           <div class="index-item"><tr>
           <td><%="#{cab_config.colour} #{cab_config.style} #{cab_config.collection.name} Cabinet ##{cab_config.id}"%> </td>
-          
+          <td><%= cab_config.price%>
                 <td><%= link_to "View", cab_config_path( cab_config )%></td>
                 
                 <td><%= link_to "Destroy", cab_config_path( cab_config ), method: :delete, data:{confirm: "reeeeaaaallllyyy???"}%></td>

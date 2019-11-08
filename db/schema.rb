@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_08_004054) do
+ActiveRecord::Schema.define(version: 2019_11_08_033054) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 2019_11_08_004054) do
     t.bigint "collection_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.decimal "price", default: "0.0"
+    t.integer "price", default: 1
     t.index ["collection_id"], name: "index_cab_configs_on_collection_id"
     t.index ["profile_id"], name: "index_cab_configs_on_profile_id"
   end

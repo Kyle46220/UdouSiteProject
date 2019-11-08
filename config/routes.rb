@@ -99,6 +99,9 @@ Rails.application.routes.draw do
   
   resources :orders
 
+  get "/payments/success", to: "payments#success"
+  
+
   
 
 #   get 'line_items/:id' => "line_items#show", as: "line_item"

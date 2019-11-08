@@ -28,10 +28,11 @@ class CartItemsController < ApplicationController
       @cart_item.quantity += 1
     else
       @cart_item = CartItem.new
+     
       @cart_item.cart = current_cart
       @cart_item.cab_config = chosen_cabinet
     end
-    # byebug
+    
 
     # Save and redirect to cart show path
     @cart_item.save

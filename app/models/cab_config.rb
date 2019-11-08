@@ -1,4 +1,5 @@
-class CabConfig < ApplicationRecord
+class CabConfig < ApplicationRecord 
+  include ::CabConfigsHelper
   
   belongs_to :collection
   has_many :upload, dependent: :destroy

@@ -10,7 +10,8 @@ class CartsController < ApplicationController
   # end
   def show
     @cart = @current_cart
-    byebug
+    
+    
     session = Stripe::Checkout::Session.create(
         payment_method_types: ['card'],
         customer_email: current_user.email,
