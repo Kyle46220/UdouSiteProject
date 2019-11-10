@@ -1,4 +1,4 @@
-<h1> this is the new cab config form </h1>
+<div class="form">
 
 <%= form_with model:@cab_config do |form| %>
 <div>
@@ -13,7 +13,7 @@
   </div>
   <div>
     <%= form.label :width %>
-    <%= form.number_field :depth %>
+    <%= form.number_field :width %>
   </div>
   <div>
     <%= form.label :depth %>
@@ -43,12 +43,17 @@
     <%= form.number_field :cupboard_qty %>
   </div>
 
+
   <div>
-    <%= form.label :back_panel %>
-    <%= form.text_field :back_panel %>
+    <%= form.radio_button(:back_panel, true) %>
+    <%= form.label(:back_panel_true, "I want a back panel") %>
+    <%= form.radio_button(:back_panel, false) %>
+    <%= form.label(:back_panel_false, "Leave the cabinet back open") %>
+    
   </div>
+  
   <div>
-    <%form.label :style%>
+    <%form.label :style %>
     <%CabConfig.styles.keys.each do |style|%>
       <%=form.label style %>
       <%=form.radio_button :style, style %>
@@ -61,3 +66,4 @@
   <%= form.submit %>
 
 <% end %>
+</div>

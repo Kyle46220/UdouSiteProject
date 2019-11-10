@@ -1,3 +1,10 @@
-<h1>CabConfigs#edit</h1>
-<p>Find me in app/views/cab_configs/edit.html.erb</p>
+<div class="page-content">
+  <div class="page-heading"> 
+<h1><%="#{@cab_config.colour} #{@cab_config.style} #{@cab_config.collection.name} Cabinet #{@cab_config.id}"%></h1>
+</div>
+<div class="page-body">
+
 <%= render 'shared/edit_cab_config_form', cab_config: @cab_config %>
+
+</div>
+</div>

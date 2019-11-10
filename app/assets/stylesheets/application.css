@@ -53,3 +53,38 @@
   width: 25%;
   
 }
+
+.page-heading {
+  margin: 10px;
+
+}
+
+.page-content {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+
+}
+
+.page-body {
+  margin: 10px
+
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  height: 80vh;
+  justify-content:space-between;
+
+
+}
+.footer {
+  height: 60px;
+  position: fixed;
+  bottom: 0px;
+
+}
+.footer-content {
+  margin: 10px;
+}

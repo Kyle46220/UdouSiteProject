@@ -1,5 +1,9 @@
-<h1>Carts#show</h1>
-<p>Find me in app/views/carts/show.html.erb</p>
+<div class="page-content">
+  <div class="page-heading"> 
+<h1>Shopping Cart</h1>
+
+</div>
+<div class="page-body">
 <ul>
 <%= @cart.cart_items.each do |cart_item|%>
 <li> Item: <%= cart_item.id %> </li>
@@ -32,4 +36,6 @@
     });
 </script>
 <%= link_to "Empty cart", cart_path(@current_cart),method: :delete, data: {confirm: "Are you sure?"} %>
+</div>
+</div>
 

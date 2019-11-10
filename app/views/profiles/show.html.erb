@@ -1,10 +1,18 @@
-<h1>Hello<%= current_user.profile.name%> </h1>
 
-<h2><%=@profile.name %> </h2>
+<div class="page-content">
+  <div class="page-heading"> 
+    <h1>Hello<%= current_user.profile.name%> </h1>
+  </div>
+  <div class="page-body">
 
-<h2><%=@profile.user_type %> </h2>
+    <h2><%=@profile.name %> </h2>
 
-<%= link_to 'Edit Profile', edit_profile_path %>
+    <h2><%=@profile.user_type %> </h2>
 
-<%= link_to 'My Saved Designs', private_index_cab_configs_path(collection: @collection) %>
+    <%= link_to 'Edit Profile', edit_profile_path %>
+
+    <%= link_to 'My Saved Designs', private_index_cab_configs_path(collection: @collection) %>
+  </div>
+</div>
+
 
