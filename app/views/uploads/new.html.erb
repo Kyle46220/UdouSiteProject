@@ -1,28 +1,33 @@
 <div class="page-content">
   <div class="page-heading"> 
-    <h1>Uploads#new</h1>
+    <h1>Upload</h1>
     </div>
   <div class="page-body">
 <div class="form">
-<%= form_with model:@upload do |form| %>
-  
-  
-  <div>
-    <%= form.label :cab_config_id %>
-    <%= form.select :cab_config_id, options_for_select(current_user.profile.collections.first.cab_configs.all.collect {|cab_config| ["#{cab_config.colour} #{cab_config.style} #{cab_config.collection.name} Cabinet ##{cab_config.id}", cab_config.id]}) %>
-  </div>
+<% if current_user.profile.collections.first%>
+  <%= form_with model:@upload do |form| %>
+    
+    
+    <div>
+      <%= form.label :cab_config_id %>
+      <%= form.select :cab_config_id, options_for_select(current_user.profile.collections.first.cab_configs.all.collect {|cab_config| ["#{cab_config.colour} #{cab_config.style} #{cab_config.collection.name} Cabinet ##{cab_config.id}", cab_config.id]}) %>
+    </div>
+    
 
-  
+    
 
-  <div >
-  <%=form.label :image_upload%>
-  <%=form.file_field :image_upload, accept: 'image/png, image/gif, image/jpeg, image/jpg'%>
+    <div >
+    <%=form.label :image_upload%>
+    <%=form.file_field :image_upload, accept: 'image/png, image/gif, image/jpeg, image/jpg'%>
 
-  </div>
+    </div>
 
-  <%= form.submit %>
+    <%= form.submit %>
 
-<% end %>
+  <% end %>
+<%else%>
+  <h1>Please edit or create a cab config before attaching an upload</h1>
+  <%end%>
 </div>
 </div>
 </div>

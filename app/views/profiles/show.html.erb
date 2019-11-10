@@ -1,13 +1,16 @@
 
 <div class="page-content">
   <div class="page-heading"> 
-    <h1>Hello<%= current_user.profile.name%> </h1>
+    <h1>Hello <%= current_user.profile.name.capitalize%> </h1>
   </div>
   <div class="page-body">
+  <strong>Name:</strong>
 
     <h2><%=@profile.name %> </h2>
+    <strong>User Type:</strong>
 
     <h2><%=@profile.user_type %> </h2>
+    <br>
 
     <%= link_to 'Edit Profile', edit_profile_path %>
 
