@@ -1,6 +1,6 @@
 module CabConfigsHelper
 
-  # this is code from my terminal app which calculates prices of cabinets based on user input paramters. 
+  # this is code from my terminal app project which calculates prices of cabinets based on user input parameters. 
  def price_calc(project_hash)
 
     material_thickness = 18
@@ -374,7 +374,7 @@ module CabConfigsHelper
     item.sum * mark_up
   end
   
-  final_price = mark_up(3, panel_cost, connector_cost, shelf_support_cost) + mark_up(1.3, machining_cost)
+  final_price = mark_up(3, panel_cost, connector_cost, shelf_support_cost) + mark_up(2, machining_cost)
   
   
 end
