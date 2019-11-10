@@ -73,6 +73,13 @@ class CartItemsController < ApplicationController
     
   end
 
+  def delete
+    @cart_item = CartItem.find(params[:id])
+    @cart_item.destroy
+    redirect_to cart_path(@current_cart)
+    
+  end
+
   private
 
   # def set_cart

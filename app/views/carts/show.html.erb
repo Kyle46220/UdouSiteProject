@@ -14,7 +14,7 @@
 <%end%>
 
 
-<%= link_to "Proceed to checkout", new_order_path %><br>
+
 
 <button data-stripe="payment">
   Pay Deposit <%= number_to_currency(@cart.sub_total) %>

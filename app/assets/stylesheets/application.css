@@ -56,7 +56,7 @@
 
 .page-heading {
   margin: 10px;
-  
+
 
 }
 
@@ -76,7 +76,7 @@
   margin: 20px;
   display: flex;
   flex-direction: column;
-  height: 50vh;
+  
   justify-content:space-between;
   align-items: center;
 

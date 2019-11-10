@@ -1,6 +1,16 @@
 <div class="form">
 
-<%= form_with model:@cab_config do |form| %>
+<%= form_with model:@cab_config, local: true do |form| %>
+<% if @cab_config.errors.any? %>
+    <div class="error_explanation">
+      <h2><%= pluralize(@cab_config.errors.count, "error") %> prohibited this listing from being saved:</h2>
+      <ul>
+        <% @cab_config.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 <div>
     <%= form.label :collection_id %>
     <%= form.select :collection_id, options_for_select(Collection.all.collect {|u| [u.name, u.id]}, :selected => Collection.first) %>
@@ -15,15 +25,23 @@
     <%= form.label :width %>
     <%= form.number_field :width %>
   </div>
+  
   <div>
-    <%= form.label :depth %>
-    <%= form.number_field :depth %>
+    <%form.label :depth%>
+    <p>Cabinet Depth:<p>
+    
+    <%CabConfig.depths.keys.each do |depth|%>
+      <%=form.label depth %>
+      <%=form.radio_button :depth, depth %>
+     
+    <%end%>
   </div>
   
  
    <div>
     <%form.label :colour%>
-    <%= color_field(:colour, :colour) %>
+    <p> Cabinet Colour: <p>
+    
     <%CabConfig.colours.keys.each do |col|%>
       <%=form.label col %>
       <%=form.radio_button :colour, col %>

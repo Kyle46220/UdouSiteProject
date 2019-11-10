@@ -89,6 +89,7 @@ Rails.application.routes.draw do
   # get 'carts/:id', to: "carts#show", as: "cart"
   delete 'carts/:id', to: "carts#destroy"
   get 'cart', to: "carts#show", as: "cart"
+  delete 'cart.:id', to: "carts#delete"
 
   post 'cart_items/:id/add', to: "cart_items#up_qty", as: "cart_item_up"
   post 'cart_items/:id/reduce', to: "cart_items#down_qty", as: "cart_item_down"

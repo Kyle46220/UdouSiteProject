@@ -7,5 +7,7 @@ class Profile < ApplicationRecord
   enum email_opt_in:{yes: 0, no:1 }
   enum user_type:{admin: 0, customer:1}
 
+  validates :name, :user_type, :email_opt_in, presence: true
+
 
 end

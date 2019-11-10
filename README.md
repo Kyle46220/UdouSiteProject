@@ -14,9 +14,13 @@ Link to deployed app
 
 https://infinite-plateau-43902.herokuapp.com/
 
+To use the app just sign up and fill out details. You will select either "admin" for cabinet manufacturers/sellers, or "customer" for a buyer. 
+
 Link to GitHub repository 
 
 https://github.com/Kyle46220/UdouSiteProject
+
+
 
 
 ## Description 

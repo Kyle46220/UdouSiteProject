@@ -10,7 +10,7 @@ class CartsController < ApplicationController
   # end
   def show
     @cart = @current_cart
-    
+    if @cart.cart_items.count > 0  &
     
     session = Stripe::Checkout::Session.create(
         payment_method_types: ['card'],
@@ -35,6 +35,8 @@ class CartsController < ApplicationController
 
 
     @session_id = session.id
+      else render "empty_cart"
+      end
    
   end
 
