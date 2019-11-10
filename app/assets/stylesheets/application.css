@@ -22,7 +22,7 @@
 }
 .small-nav {
   
-  background-color: red;
+  background-color: pink;
   height: 30px;
 }
 .logout-option {
@@ -40,7 +40,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: teal;
+  background-color: skyblue;
 }
 
 .index table {
