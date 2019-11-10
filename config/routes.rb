@@ -100,6 +100,7 @@ Rails.application.routes.draw do
   resources :orders
 
   get "/payments/success", to: "payments#success"
+  post "/payments/webhook", to: "payments#webhook"
   
 
   

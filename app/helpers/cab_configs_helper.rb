@@ -1,22 +1,15 @@
 module CabConfigsHelper
+
+  # this is code from my terminal app which calculates prices of cabinets based on user input paramters. 
  def price_calc(project_hash)
-  # project_hash = {
-  #   height: new_height_select.to_i,
-  #   width: cab_width.to_i,
-  #   depth: cab_depth.to_i,
-  #   shelves: shelves.to_i,
-  #   cupboards: [],
-  #   drawers: [],
-  #   colour: colour,
+
     material_thickness = 18
 
     size_1 = 180
     size_2 = 280
     size_3 = 380
   
-  # }
-
-  # project_hash = project_hash.map { |k, v| [k.to_sym, v] }
+ 
 
   materials_list = {
     plywood: {

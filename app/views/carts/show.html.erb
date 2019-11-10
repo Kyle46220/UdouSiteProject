@@ -11,10 +11,9 @@
 
 
 <%= link_to "Proceed to checkout", new_order_path %><br>
-<%= link_to "Empty cart", cart_path(@current_cart),method: :delete, data: {confirm: "Are you sure?"} %>
 
 <button data-stripe="payment">
-  BUY IT ALL <%= number_to_currency(@cart.sub_total) %>
+  Pay Deposit <%= number_to_currency(@cart.sub_total) %>
 </button>
 
 <script src="https://js.stripe.com/v3/"></script>
@@ -32,3 +31,5 @@
       });
     });
 </script>
+<%= link_to "Empty cart", cart_path(@current_cart),method: :delete, data: {confirm: "Are you sure?"} %>
+

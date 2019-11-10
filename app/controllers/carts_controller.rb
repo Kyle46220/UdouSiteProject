@@ -38,7 +38,7 @@ class CartsController < ApplicationController
    
   end
 
-  def destroy
+  def delete
     @cart = @current_cart
     @cart.destroy
     session[:cart_id] = nil
